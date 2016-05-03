@@ -6,23 +6,16 @@ set(CMAKE_CXX_STANDARD 14)
 find_package(Boost 1.59 REQUIRED coroutine thread system context)
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
+
 add_executable(01 01.cc)
-target_link_libraries(01 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
-
 add_executable(02 02.cc)
-target_link_libraries(02 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
-
 add_executable(03 03.cc)
-target_link_libraries(03 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
-
 add_executable(04 04.cc)
-target_link_libraries(04 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
 add_executable(05 05.cc)
 target_link_libraries(05 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
 add_executable(06 06.cc)
-target_link_libraries(06 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
 add_executable(07 07.cc)
 target_link_libraries(07 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})

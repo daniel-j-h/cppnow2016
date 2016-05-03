@@ -1,0 +1,14 @@
+language: generic
+sudo: required
+dist: trusty
+
+install:
+ - bash <(curl -sS https://nixos.org/nix/install)
+ - source $HOME/.nix-profile/etc/profile.d/nix.sh
+
+before_script:
+  - cd ${TRAVIS_BUILD_DIR}
+
+script:
+  - nix-shell --pure --run 'env CXXFLAGS="-Wall -Wextra -pedantic" mkdir -p build && cd build && cmake ..'
+  - nix-shell --pure --run 'cmake --build build'
