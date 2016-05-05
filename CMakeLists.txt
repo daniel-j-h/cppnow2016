@@ -19,3 +19,5 @@ add_executable(06 06.cc)
 
 add_executable(07 07.cc)
 target_link_libraries(07 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+
+add_executable(08 08.cc)
