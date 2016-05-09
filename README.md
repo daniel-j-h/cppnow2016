@@ -39,6 +39,8 @@ With [Nix](https://nixos.org/nix/):
 - [Boost.Coroutine](http://www.boost.org/doc/libs/1_60_0/libs/coroutine/doc/html/index.html)
 - [tippecanoe](https://github.com/mapbox/tippecanoe) for zoom-based GeoJSON simplification
 - [Mapbox Studio](https://www.mapbox.com/studio) or [geojson.io](http://geojson.io) for visualizing GeoJSON
+- [Richel Bilderbeek's recent take on writing a C++11 Boost.Graph tutorial](https://github.com/richelbilderbeek/BoostGraphTutorial)
+- [libosmium](https://github.com/osmcode/libosmium) and [Boost.Geometry](http://www.boost.org/doc/libs/1_60_0/libs/geometry/doc/html/index.html) for your OpenStreetMap based project
 
 
 ## License
