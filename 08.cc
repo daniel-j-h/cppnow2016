@@ -17,6 +17,12 @@ using namespace boost;
 using namespace boost::adaptors;
 
 
+// The following shows how to produce GeoJSON from your graph with location-tagged vertices.
+// Use Mapbox Studio geojson.io or Github / Gist to visualize the GeoJSON result on top of a map.
+// You can format the output for quick manual inspection with: ./08 | python3 -m json.tool
+// For larger graphs you want to use tippecanoe for zoom-level based simplification.
+// The following could be made more generic requiring only a location property map.
+
 struct location_t { float longitude = 0., latitude = 0.; };
 
 using graph_t = compressed_sparse_row_graph<directedS, location_t>;

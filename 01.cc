@@ -1,9 +1,12 @@
-#include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_utility.hpp>
 
 using namespace boost;
 
+
+// The following constructs a simple graph we can dynamically add edges and vertices to.
+// Using vecS for the adjacency list containers selects std::vector for inner and outer container.
+// Using directedS makes all edges directed by default. We can still manually add reverse edges.
 
 using graph_t = adjacency_list<vecS, vecS, directedS>;
 

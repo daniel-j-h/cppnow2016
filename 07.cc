@@ -11,6 +11,12 @@
 using namespace boost;
 
 
+// Use-case: bidirectional Dijkstra st-shortest path.
+// In the following we construct a graph and run a Dijkstra search starting at the source on it.
+// We also construct a reverse graph and run a Dijkstra search starting at the target on it.
+// This time we use the coroutine pattern to construct lazy shortest path ranges.
+// We then can step through both ranges in a ping-pong fashion, alternating between forward and reverse search.
+
 struct edge_data_t { int distance = 0; };
 
 using graph_t = compressed_sparse_row_graph<bidirectionalS, no_property, edge_data_t>;
@@ -69,6 +75,9 @@ int main() {
         .visitor(dijkstra_stepwise{sink}));
   }};
 
+  // Manually stepping through the generators (as in: not using range-based for loop) requires us to
+  // - extract the vertex with .get() the visitors are handing over to us
+  // - single stepping the stopped coroutines with operator() to resume them
   while (lazy_forward_vertices && lazy_backward_vertices) {
     std::cout << "forward " << lazy_forward_vertices.get() << std::endl;
     std::cout << "backward " << lazy_backward_vertices.get() << std::endl;

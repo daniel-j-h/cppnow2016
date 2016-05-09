@@ -9,6 +9,13 @@
 using namespace boost;
 
 
+// Use-case: bidirectional Dijkstra st-shortest path.
+// In the following we construct a graph and run a Dijkstra search starting at the source on it.
+// We also construct a reverse graph and run a Dijkstra search starting at the target on it.
+// The question is how to stop in the "middle" where both searches meet (assuming there exists a path).
+// Follow the execution and have a look where the "*" is getting printed.
+// One approach is to use threads, synchronization and throwing exceptions from the visitors.
+
 struct edge_data_t { int distance = 0; };
 
 using graph_t = compressed_sparse_row_graph<bidirectionalS, no_property, edge_data_t>;

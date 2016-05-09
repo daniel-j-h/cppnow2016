@@ -5,10 +5,23 @@
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 
+#include <boost/range/algorithm.hpp>
+
 #include <boost/coroutine/all.hpp>
 
 using namespace boost;
 
+
+// In the following we introduce coroutines and the overall pattern presented here.
+// We provide a breadth-first search visitor that pushes vertices into a push_type coroutine.
+// Using the coroutine's pull_type lets us transform the visitor into a lazy generator we can step through.
+// The generator provides the usual begin(), end() interface and is suitable for range-based for loops.
+// Looping through the generator does the following:
+//  - run the visitor for one vertex
+//  - stop the visitor handing over the vertex to the call site
+//  - resume the visitor for one vertex, repeat this stepwise process
+// This provides us with a lazy range of vertices in breadth-first order we can loop over, inverting the control flow.
+// Note how we can use stdlib algorithms on this range, e.g. std::find_if to search for vertices in breadth-first order.
 
 using graph_t = compressed_sparse_row_graph<directedS>;
 using vertex_t = graph_traits<graph_t>::vertex_descriptor;
@@ -48,4 +61,14 @@ int main() {
     std::cout << vertex << std::endl;
     std::cout << "*" << std::endl;
   }
+
+  // The following shows how we're able to plug in the full stdlib algorithms.
+  // It also shows what happens if you step through an exhausted generator.
+  // Give it a try and then comment out the range-based for loop above.
+
+  // auto splits = [&graph](auto vertex) { return out_degree(vertex, graph) > 1; };
+  // auto it = find_if(lazy_bfs_vertices, splits);
+  //
+  // if (it != end(lazy_bfs_vertices))
+  //   std::cout << *it << std::endl;
 }

@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 
 #include <boost/range.hpp>
@@ -10,6 +9,12 @@
 using namespace boost;
 using namespace boost::adaptors;
 
+
+// Here we show Bundled Properties by attaching edge_data_t to each edge in the adjacency list.
+// We use boost::no_property for vertex properties since we do not want properties on them.
+// Algorithms such as vertices(graph) and edges(graph) return ranges (pairs with first, last).
+// We prefer using Boost.Range's algorithms such as boost::accumulate to iterate on the pair's range.
+// In addition, we find Boost.Range's adaptors and their pipe syntax a perfect fit for these use-cases.
 
 struct edge_data_t { int duration = 0; };
 

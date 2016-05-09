@@ -8,6 +8,9 @@
 using namespace boost;
 
 
+// Here we provide a custom breadth-first search visitor, printing vertices in the order we discover them.
+// Note how the breadth_first_search call at the end runs through before the final "*" is printed.
+
 using graph_t = compressed_sparse_row_graph<directedS>;
 using vertex_t = graph_traits<graph_t>::vertex_descriptor;
 

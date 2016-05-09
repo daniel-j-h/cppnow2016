@@ -3,7 +3,6 @@
 
 #include <boost/graph/compressed_sparse_row_graph.hpp>
 #include <boost/graph/graph_traits.hpp>
-#include <boost/graph/graph_utility.hpp>
 
 #include <boost/property_map/property_map.hpp>
 
@@ -14,6 +13,10 @@
 using namespace boost;
 using namespace boost::adaptors;
 
+
+// The following uses a static graph (compressed sparse row graph) we can no longer modify once constructed.
+// Due to this restriction it is highly compact and efficient, and the only option for large sparse graphs.
+// We do not use Bundled Properties but instead only temporarily use external properties through a property map.
 
 struct vertex_data_t { int priority = 0; };
 
