@@ -32,6 +32,15 @@ With [Nix](https://nixos.org/nix/):
     nix-shell --pure --run 'cmake --build build'
 
 
+## Resources
+
+- [Boost.Graph](http://www.boost.org/doc/libs/1_60_0/libs/graph/doc/table_of_contents.html)
+- [Boost.Graph Concepts](http://www.boost.org/doc/libs/1_60_0/libs/graph/doc/graph_concepts.html)
+- [Boost.Coroutine](http://www.boost.org/doc/libs/1_60_0/libs/coroutine/doc/html/index.html)
+- [tippecanoe](https://github.com/mapbox/tippecanoe) for zoom-based GeoJSON simplification
+- [Mapbox Studio](https://www.mapbox.com/studio) or [geojson.io](http://geojson.io) for visualizing GeoJSON
+
+
 ## License
 
 Copyright © 2016 Daniel J. Hofmann
