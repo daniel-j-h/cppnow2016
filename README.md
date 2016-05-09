@@ -3,6 +3,25 @@
 [![Continuous Integration](https://travis-ci.org/daniel-j-h/cppnow2016.svg?branch=master)](https://travis-ci.org/daniel-j-h/cppnow2016)
 
 
+## Overview
+
+I recommend going through the examples in order.
+
+| Example        | Introduces                                                                                           |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
+| [01.cc](01.cc) | Dynamic graph, `adjacency_list`                                                                      |
+| [02.cc](02.cc) | Bundled Properties, working with vertex / edge ranges                                                |
+| [03.cc](03.cc) | Static graph, `compressed_sparse_row_graph`, temporary graph-external properties                     |
+| [04.cc](04.cc) | Breadth-first search, customization through visitor                                                  |
+| [05.cc](05.cc) | Breadth-first search, inverting control flow with coroutines, stepwise iteration, stdlib integration |
+| [06.cc](06.cc) | Bidirectional dijkstra, customization through visitor, problem with stepping visitors                |
+| [07.cc](07.cc) | Bidirectional dijkstra, inverted control flow with coroutines, stepwise iteration                    |
+| [08.cc](08.cc) | GeoJSON from graph for visualization                                                                 |
+
+
+## Building the Examples
+
+
     mkdir build && cd build
     export CC='clang' CXX='clang++' CXXFLAGS='-Wall -Wextra -pedantic'
     cmake .. -DCMAKE_BUILD_TYPE=Release
