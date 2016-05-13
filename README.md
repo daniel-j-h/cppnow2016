@@ -31,6 +31,8 @@ With [Nix](https://nixos.org/nix/):
     nix-shell --pure --run 'env CXXFLAGS="-Wall -Wextra -pedantic" mkdir build && cd build && cmake ..'
     nix-shell --pure --run 'cmake --build build'
 
+Note: apply `use-boost-coroutine2.patch` if you want to use the newer Boost.Coroutine2 instead of the Boost.Coroutine library.
+This requires your Boost distribution to be build with `CXXFLAGS=-std=c++14`, which is probably not the case by default.
 
 ## Resources
 

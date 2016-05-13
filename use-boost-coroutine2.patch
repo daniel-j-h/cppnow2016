@@ -1,0 +1,71 @@
+diff --git a/05.cc b/05.cc
+index 7fcf4ff..d324e50 100644
+--- a/05.cc
++++ b/05.cc
+@@ -7,7 +7,7 @@
+ 
+ #include <boost/range/algorithm.hpp>
+ 
+-#include <boost/coroutine/all.hpp>
++#include <boost/coroutine2/all.hpp>
+ 
+ using namespace boost;
+ 
+@@ -25,7 +25,7 @@ using namespace boost;
+ 
+ using graph_t = compressed_sparse_row_graph<directedS>;
+ using vertex_t = graph_traits<graph_t>::vertex_descriptor;
+-using coro_t = coroutines::asymmetric_coroutine<vertex_t>;
++using coro_t = coroutines2::coroutine<vertex_t>;
+ 
+ struct discover_visitor : default_bfs_visitor {
+   discover_visitor(coro_t::push_type& sink_) : sink(sink_) { }
+diff --git a/07.cc b/07.cc
+index d690108..99b1053 100644
+--- a/07.cc
++++ b/07.cc
+@@ -6,7 +6,7 @@
+ #include <boost/graph/reverse_graph.hpp>
+ #include <boost/graph/dijkstra_shortest_paths_no_color_map.hpp>
+ 
+-#include <boost/coroutine/all.hpp>
++#include <boost/coroutine2/all.hpp>
+ 
+ using namespace boost;
+ 
+@@ -21,7 +21,7 @@ struct edge_data_t { int distance = 0; };
+ 
+ using graph_t = compressed_sparse_row_graph<bidirectionalS, no_property, edge_data_t>;
+ using vertex_t = graph_traits<graph_t>::vertex_descriptor;
+-using coro_t = coroutines::asymmetric_coroutine<vertex_t>;
++using coro_t = coroutines2::coroutine<vertex_t>;
+ 
+ struct dijkstra_stepwise : default_dijkstra_visitor {
+   dijkstra_stepwise(coro_t::push_type& sink_) : sink(sink_) {}
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4efc452..f0058e5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@ project(pulling-visitors VERSION 0.0.1 LANGUAGES CXX)
+ 
+ set(CMAKE_CXX_STANDARD 14)
+ 
+-find_package(Boost 1.59 REQUIRED coroutine thread system context)
++find_package(Boost 1.59 REQUIRED thread system context)
+ include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+ 
+ 
+@@ -13,11 +13,11 @@ add_executable(03 03.cc)
+ add_executable(04 04.cc)
+ 
+ add_executable(05 05.cc)
+-target_link_libraries(05 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
++target_link_libraries(05 ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+ 
+ add_executable(06 06.cc)
+ 
+ add_executable(07 07.cc)
+-target_link_libraries(07 ${Boost_COROUTINE_LIBRARY} ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
++target_link_libraries(07 ${Boost_CONTEXT_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+ 
+ add_executable(08 08.cc)
